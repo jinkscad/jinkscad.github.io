@@ -1,1 +1,236 @@
-In Progress
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jinn Kasai — Portfolio</title>
+  <meta name="description" content="Portfolio of Jinn Kasai — Computing Science @ UAlberta. Projects, experience, and contact." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0c0f; /* near-black */
+      --panel:#111318; /* card bg */
+      --muted:#a5adbb; /* secondary text */
+      --text:#e6e9ef; /* main text */
+      --brand:#4f8cff; /* accent */
+      --brand-2:#8b5cf6; /* secondary accent */
+      --ring: 0 0 0 3px rgba(79,140,255,.35);
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:radial-gradient(1200px 600px at 80% -10%, rgba(139,92,246,.10), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, rgba(79,140,255,.10), transparent 60%), var(--bg);
+      color:var(--text); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height:1.6;
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{opacity:.9}
+
+    /* Header */
+    .wrap{max-width:1000px; margin:0 auto; padding:0 20px}
+    header{
+      position:sticky; top:0; z-index:20; backdrop-filter:saturate(140%) blur(8px);
+      background:rgba(11,12,15,.6); border-bottom:1px solid rgba(255,255,255,.06)
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; padding:14px 0;
+    }
+    .brand{display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.4px}
+    .brand .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 0 20px rgba(79,140,255,.7)}
+    .menu{display:flex; gap:18px; align-items:center}
+    .menu a{color:var(--text); opacity:.85; font-weight:500}
+    .menu a.active{color:#fff}
+    .btn{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:white; padding:10px 14px; border-radius:999px; font-weight:600; box-shadow:var(--shadow)}
+
+    /* Hero */
+    .hero{padding:80px 0 30px}
+    .hero .card{display:grid; grid-template-columns:1.2fr .8fr; gap:24px; background:var(--panel); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.06)}
+    .hero h1{font-size:clamp(28px, 4vw, 40px); line-height:1.15; margin:0 0 10px}
+    .hero p{color:var(--muted); margin:0}
+    .chiprow{display:flex;flex-wrap:wrap; gap:10px; margin-top:16px}
+    .chip{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.09); padding:8px 12px; border-radius:999px; font-weight:600; font-size:14px}
+    .hero aside{display:flex; align-items:center; justify-content:center}
+    .avatar{
+      width:min(220px, 90%); aspect-ratio:1; border-radius:20px;
+      background:linear-gradient(145deg, rgba(79,140,255,.22), rgba(139,92,246,.22));
+      border:1px solid rgba(255,255,255,.1); box-shadow:var(--shadow);
+      display:grid; place-items:center; font-size:48px; font-weight:800; letter-spacing:1px
+    }
+
+    /* Sections */
+    section{padding:48px 0}
+    h2{font-size:26px; margin:0 0 18px}
+    .grid{display:grid; gap:18px}
+    @media(min-width:820px){ .grid.cols-2{grid-template-columns:1fr 1fr} }
+
+    .card{background:var(--panel); border:1px solid rgba(255,255,255,.06); border-radius:var(--radius); padding:18px 18px; box-shadow:var(--shadow)}
+    .muted{color:var(--muted)}
+
+    /* Portfolio cards */
+    .proj{display:flex; gap:16px; align-items:flex-start}
+    .badge{font-size:12px; font-weight:700; padding:2px 8px; border-radius:999px; background:rgba(79,140,255,.15); border:1px solid rgba(79,140,255,.35); margin-left:8px}
+    .proj h3{margin:0 0 6px; font-size:18px}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+    .tag{font-size:12px; padding:6px 8px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08)}
+
+    /* Contact */
+    form{display:grid; gap:12px}
+    input, textarea{width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); color:var(--text)}
+    input:focus, textarea:focus{outline:none; box-shadow:var(--ring); border-color:transparent}
+    textarea{min-height:120px; resize:vertical}
+
+    footer{padding:40px 0; color:var(--muted); text-align:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><span class="dot"></span> <span>Jinn Kasai</span></div>
+      <nav class="menu" aria-label="Primary" id="topnav">
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download CV</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Hero / About Short -->
+    <section class="hero" id="about">
+      <div class="card">
+        <div>
+          <h1>Computing Science student @ University of Alberta</h1>
+          <p class="muted">I build reliable, security‑minded software. Interests: systems (RISC‑V, C), Android, and applied security (Web, Cloud). Currently developing an event‑lottery Android app and exploring threat‑intel datasets.</p>
+          <div class="chiprow" aria-label="Top skills">
+            <span class="chip">Java / Android</span>
+            <span class="chip">C / RISC‑V</span>
+            <span class="chip">Python</span>
+            <span class="chip">Firebase</span>
+            <span class="chip">Git / GitHub</span>
+            <span class="chip">Security Engineering</span>
+          </div>
+        </div>
+        <aside>
+          <div class="avatar" aria-hidden="true">JK</div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <div class="grid cols-2">
+        <article class="card proj">
+          <div>
+            <h3>Chicks Events — Android lottery system <span class="badge">Work‑in‑progress</span></h3>
+            <p class="muted">CMPUT 301 team project: event creation, wait‑lists, QR codes, Firebase auth/RTDB, and UI tests. I’m leading create‑event flow and data model design.</p>
+            <div class="tags">
+              <span class="tag">Java</span><span class="tag">Android</span><span class="tag">Firebase</span><span class="tag">JUnit</span>
+            </div>
+            <p style="margin-top:10px"><a href="https://github.com/CMPUT301F25chicks/chicks-events" target="_blank" rel="noopener">View repository</a></p>
+          </div>
+        </article>
+
+        <article class="card proj">
+          <div>
+            <h3>RISC‑V Labs — performance & tooling</h3>
+            <p class="muted">Low‑level exercises including stack discipline, return‑address stack simulation, and instruction‑level performance analysis.</p>
+            <div class="tags">
+              <span class="tag">RISC‑V</span><span class="tag">C</span><span class="tag">Assembly</span><span class="tag">Performance</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj">
+          <div>
+            <h3>Security Labs & Bug‑Bounty practice</h3>
+            <p class="muted">Web Security Academy labs (SQLi/SSRF/file upload), write‑ups, and safe reproduction scripts. Focus on practical, responsible workflows.</p>
+            <div class="tags">
+              <span class="tag">Security</span><span class="tag">Burp Suite</span><span class="tag">Python</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card proj">
+          <div>
+            <h3>Data & Finance experiments</h3>
+            <p class="muted">Small Python notebooks exploring investment rules (NISA/TFSA), datasets, and visualisations; emphasis on clarity and reproducibility.</p>
+            <div class="tags">
+              <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <p class="muted">If you’d like to chat about internships, research, or collaborations, send me a message. I’ll get back to you as soon as I can.</p>
+          <form id="contactForm" onsubmit="return sendMail(event)">
+            <label>
+              <span>Name</span><br/>
+              <input required type="text" name="name" placeholder="Your name" />
+            </label>
+            <label>
+              <span>Email</span><br/>
+              <input required type="email" name="email" placeholder="you@example.com" />
+            </label>
+            <label>
+              <span>Message</span><br/>
+              <textarea required name="message" placeholder="Hi Jinn, I’m reaching out about…"></textarea>
+            </label>
+            <div>
+              <button class="btn" type="submit">Send</button>
+            </div>
+            <p class="muted" style="font-size:12px">This uses a simple <code>mailto:</code> link. For a proper contact form, you can wire up Formspree or a lightweight backend later.</p>
+          </form>
+        </div>
+        <div class="card">
+          <p><strong>Email:</strong> <a href="mailto:jinn.kasai@example.com">jinn.kasai@example.com</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/jinkscad" target="_blank" rel="noopener">@jinkscad</a></p>
+          <p><strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">Add link</a></p>
+          <p class="muted">Replace the placeholders with your real contact links.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="y"></span> Jinn Kasai. Built with GitHub Pages.</div>
+  </footer>
+
+  <script>
+    // Active link highlight on scroll
+    const links=[...document.querySelectorAll('#topnav a')].filter(a=>a.getAttribute('href').startsWith('#'));
+    const sections=links.map(l=>document.querySelector(l.getAttribute('href')));
+    const setActive=()=>{
+      const y=window.scrollY+120; // header height buffer
+      let activeIndex=0;
+      sections.forEach((s,i)=>{ if(s.offsetTop<=y) activeIndex=i; });
+      links.forEach((l,i)=> l.classList.toggle('active', i===activeIndex));
+    };
+    window.addEventListener('scroll', setActive); setActive();
+
+    // Mailto helper
+    function sendMail(e){
+      e.preventDefault();
+      const f=e.target; const name=f.name.value.trim(); const email=f.email.value.trim(); const msg=f.message.value.trim();
+      const subject=encodeURIComponent(`Website contact from ${name}`);
+      const body=encodeURIComponent(`${msg}\n\nFrom: ${name} <${email}>`);
+      window.location.href=`mailto:jinn.kasai@example.com?subject=${subject}&body=${body}`;
+      return false;
+    }
+
+    // Year in footer
+    document.getElementById('y').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
