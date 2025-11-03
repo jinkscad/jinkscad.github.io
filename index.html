@@ -66,6 +66,12 @@
     input:focus, textarea:focus{outline:none; box-shadow:var(--ring); border-color:transparent}
     textarea{min-height:120px; resize:vertical}
     footer{padding:40px 0; color:var(--muted); text-align:center}
+      /* contact icons */
+    .contactbox{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .iconrow{display:flex;gap:14px;align-items:center}
+    .iconbtn{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);box-shadow:var(--shadow)}
+    .iconbtn:hover{transform:translateY(-1px)}
+    .iconbtn svg{width:24px;height:24px;}
   </style>
 </head>
 <body>
@@ -90,8 +96,8 @@
             <span class="chip">Burp Suite</span>
             <span class="chip">Java</span>
             <span class="chip">Python</span>
-            <span class="chip">SQL</span>
             <span class="chip">C / RISC-V</span>
+            <span class="chip">SQL</span>
             <span class="chip">JS / TS</span>
             <span class="chip">VBA</span>
             <span class="chip">Git / GitHub</span>
@@ -111,8 +117,8 @@
             <ul class="muted">
               <li>Focus on vulnerability discovery, knowledge sharing, and supporting the company’s White Hat Hacker division.</li>
               <li>Engaged in Bug Bounty and Vulnerability Disclosure Programs (VDP) on HackerOne, identifying and reporting vulnerabilities.</li>
-              <li>Created onboarding and knowledge-sharing resources for new researchers to accelerate learning.</li>
-              <li>Contributed to business-side development by strengthening internal collaboration and threat research practices.</li>
+              <li>Created onboarding and knowledge‑sharing resources for new researchers to accelerate learning.</li>
+              <li>Contributed to business‑side development by strengthening internal collaboration and threat research practices.</li>
             </ul>
           </div>
         </div>
@@ -120,11 +126,11 @@
           <img src="images/gbp.png" alt="GBP logo">
           <div class="tcontent">
             <div class="role">IT Intern — GBP K.K.</div>
-            <div class="meta">Apr 2025 – Sep 2025 · Hybrid (Tokyo, Japan)</div>
+            <div class="meta">Apr 2025 – Sep 2025 · Hybrid</div>
             <ul class="muted">
-              <li>Proposed and implemented remote-monitoring security enhancements for power generation systems.</li>
-              <li>Conducted on-site UPS inspection and maintenance at hydroelectric facilities to ensure reliability.</li>
-              <li>Developed front-end components for the internal HR system using React and TypeScript.</li>
+              <li>Proposed and implemented remote‑monitoring security enhancements for power generation systems.</li>
+              <li>Conducted on‑site UPS inspection and maintenance at hydroelectric facilities to ensure reliability.</li>
+              <li>Developed front‑end components for the internal HR system using React and TypeScript.</li>
               <li>Maintained and updated corporate website built on WordPress using PHP, HTML, CSS, and JavaScript.</li>
             </ul>
           </div>
@@ -133,10 +139,10 @@
           <img src="images/nexceed.png" alt="Nexceed logo">
           <div class="tcontent">
             <div class="role">Software Engineer Intern — Nexceed Inc.</div>
-            <div class="meta">May 2025 – Aug 2025 · On-site (Tokyo, Japan)</div>
+            <div class="meta">May 2025 – Aug 2025 · On‑site (Tokyo, Japan)</div>
             <ul class="muted">
               <li>Developed an automation tool using Excel VBA to streamline data transfer between enterprise systems.</li>
-              <li>Reduced manual processing and improved efficiency by automating repetitive data-integration tasks.</li>
+              <li>Reduced manual processing and improved efficiency by automating repetitive data‑integration tasks.</li>
               <li>Created documentation and training materials to ensure smooth internal adoption of tools.</li>
             </ul>
           </div>
@@ -146,31 +152,15 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <div class="grid cols-2">
-        <div class="card">
-          <p class="muted">If you’d like to chat about internships, research, or collaborations, send me a message. I’ll get back to you as soon as I can.</p>
-          <form id="contactForm" onsubmit="return sendMail(event)">
-            <label>
-              <span>Name</span><br/>
-              <input required type="text" name="name" placeholder="Your name" />
-            </label>
-            <label>
-              <span>Email</span><br/>
-              <input required type="email" name="email" placeholder="you@example.com" />
-            </label>
-            <label>
-              <span>Message</span><br/>
-              <textarea required name="message" placeholder="Hi Jinn, I’m reaching out about…"></textarea>
-            </label>
-            <div>
-              <button type="submit">Send</button>
-            </div>
-          </form>
-        </div>
-        <div class="card">
-          <p><strong>Email:</strong> <a href="mailto:jinn.kasai@example.com">jinn.kasai@example.com</a></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/jinkscad" target="_blank" rel="noopener">@jinkscad</a></p>
-          <p><strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">Add link</a></p>
+      <div class="card contactbox">
+        <p class="muted" style="margin:0">Feel free to contact me!</p>
+        <div class="iconrow">
+          <a class="iconbtn" href="https://www.linkedin.com/in/jin-kasai/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.9c0-1.41-.03-3.22-1.96-3.22-1.96 0-2.26 1.53-2.26 3.11V23H8V8.5z"/></svg>
+          </a>
+          <a class="iconbtn" href="mailto:skasai@ualberta.ca" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
         </div>
       </div>
     </section>
