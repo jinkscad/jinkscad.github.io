@@ -217,100 +217,111 @@
       position:absolute;
       background:radial-gradient(circle, var(--brand), transparent 60%);
       border-radius:50%;
-      box-shadow:0 0 30px var(--brand), 0 0 60px var(--brand), 0 0 90px rgba(0,255,136,0.5);
+      box-shadow:0 0 25px var(--brand), 0 0 50px var(--brand), 0 0 75px rgba(0,255,136,0.4);
       top:50%;
       left:50%;
-      opacity:0.8;
+      opacity:0.7;
       transform:translate(-50%, -50%);
-      filter:blur(8px);
+      filter:blur(12px);
     }
     @keyframes particleBurst{
       0%{
-        transform:translate(-50%, -50%) scale(0.5);
-        opacity:0.9;
-        filter:blur(10px);
+        transform:translate(-50%, -50%) scale(0.4);
+        opacity:0.8;
+        filter:blur(12px);
       }
-      30%{
-        transform:translate(calc(-50% + var(--tx) * 0.3), calc(-50% + var(--ty) * 0.3)) scale(1.5);
+      25%{
+        transform:translate(calc(-50% + var(--tx) * 0.25), calc(-50% + var(--ty) * 0.25)) scale(1.2);
         opacity:0.7;
-        filter:blur(20px);
+        filter:blur(18px);
       }
-      70%{
-        transform:translate(calc(-50% + var(--tx) * 0.7), calc(-50% + var(--ty) * 0.7)) scale(2);
-        opacity:0.4;
-        filter:blur(30px);
+      50%{
+        transform:translate(calc(-50% + var(--tx) * 0.5), calc(-50% + var(--ty) * 0.5)) scale(1.8);
+        opacity:0.5;
+        filter:blur(25px);
+      }
+      75%{
+        transform:translate(calc(-50% + var(--tx) * 0.75), calc(-50% + var(--ty) * 0.75)) scale(2.5);
+        opacity:0.3;
+        filter:blur(35px);
       }
       100%{
-        transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(3);
+        transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(3.5);
         opacity:0;
         filter:blur(50px);
       }
     }
     @keyframes explosionPulse{
       0%{
-        box-shadow:0 0 0 0 rgba(0,255,136,0.8), 0 0 0 0 rgba(0,204,255,0.6);
-        transform:translate(-50%, -50%) scale(0.3);
+        box-shadow:0 0 0 0 rgba(0,255,136,0.7), 0 0 0 0 rgba(0,204,255,0.5);
+        transform:translate(-50%, -50%) scale(0.4);
         opacity:1;
-        filter:blur(5px);
+        filter:blur(8px);
       }
-      30%{
-        box-shadow:0 0 0 60px rgba(0,255,136,0.4), 0 0 0 100px rgba(0,204,255,0.3);
-        transform:translate(-50%, -50%) scale(1.2);
-        opacity:0.9;
-        filter:blur(25px);
+      25%{
+        box-shadow:0 0 0 40px rgba(0,255,136,0.5), 0 0 0 70px rgba(0,204,255,0.4);
+        transform:translate(-50%, -50%) scale(1);
+        opacity:0.95;
+        filter:blur(20px);
       }
-      70%{
-        box-shadow:0 0 0 120px rgba(0,255,136,0.2), 0 0 0 180px rgba(0,204,255,0.15);
-        transform:translate(-50%, -50%) scale(2);
-        opacity:0.6;
-        filter:blur(40px);
+      50%{
+        box-shadow:0 0 0 80px rgba(0,255,136,0.35), 0 0 0 130px rgba(0,204,255,0.25);
+        transform:translate(-50%, -50%) scale(1.6);
+        opacity:0.8;
+        filter:blur(30px);
+      }
+      75%{
+        box-shadow:0 0 0 140px rgba(0,255,136,0.2), 0 0 0 200px rgba(0,204,255,0.15);
+        transform:translate(-50%, -50%) scale(2.3);
+        opacity:0.5;
+        filter:blur(45px);
       }
       100%{
         box-shadow:0 0 0 200px rgba(0,255,136,0), 0 0 0 300px rgba(0,204,255,0);
-        transform:translate(-50%, -50%) scale(3);
+        transform:translate(-50%, -50%) scale(3.5);
         opacity:0;
-        filter:blur(60px);
+        filter:blur(65px);
       }
     }
     @keyframes explosionCloud{
       0%{
         opacity:0;
-        transform:translate(-50%, -50%) scale(0);
-        filter:blur(15px);
+        transform:translate(-50%, -50%) scale(0.3);
+        filter:blur(12px);
       }
-      20%{
+      30%{
         opacity:1;
-        transform:translate(-50%, -50%) scale(0.8);
-        filter:blur(25px);
+        transform:translate(-50%, -50%) scale(0.9);
+        filter:blur(22px);
       }
-      50%{
-        opacity:0.9;
-        transform:translate(-50%, -50%) scale(1.5);
-        filter:blur(40px);
+      60%{
+        opacity:0.85;
+        transform:translate(-50%, -50%) scale(1.4);
+        filter:blur(35px);
       }
       100%{
         opacity:0;
-        transform:translate(-50%, -50%) scale(3);
-        filter:blur(70px);
+        transform:translate(-50%, -50%) scale(2.8);
+        filter:blur(65px);
       }
     }
     .explosion-cloud{
       position:absolute;
       top:50%;
       left:50%;
-      width:250px;
-      height:250px;
+      width:280px;
+      height:280px;
       background:radial-gradient(circle at center, 
-        rgba(0,255,136,0.5) 0%, 
-        rgba(0,255,136,0.3) 30%, 
-        rgba(0,204,255,0.25) 50%, 
-        rgba(0,204,255,0.15) 70%, 
+        rgba(0,255,136,0.45) 0%, 
+        rgba(0,255,136,0.3) 25%, 
+        rgba(0,204,255,0.25) 45%, 
+        rgba(0,204,255,0.15) 65%, 
         transparent 100%);
       border-radius:50%;
       transform:translate(-50%, -50%);
       pointer-events:none;
-      animation:explosionCloud 1.2s ease-out forwards;
-      filter:blur(20px);
+      animation:explosionCloud 1.4s ease-out forwards;
+      filter:blur(18px);
     }
     .fog-layer{
       position:absolute;
@@ -319,32 +330,47 @@
       border-radius:50%;
       transform:translate(-50%, -50%);
       pointer-events:none;
-      background:radial-gradient(ellipse, rgba(0,255,136,0.3), rgba(0,204,255,0.2), transparent 70%);
-      filter:blur(30px);
-      animation:fogSpread 1.5s ease-out forwards;
+      background:radial-gradient(ellipse, rgba(0,255,136,0.25), rgba(0,204,255,0.18), transparent 70%);
+      filter:blur(28px);
+      animation:fogSpread 1.6s ease-out forwards;
     }
     @keyframes fogSpread{
       0%{
         opacity:0;
-        transform:translate(-50%, -50%) scale(0.5);
-        filter:blur(20px);
-        width:100px;
-        height:100px;
+        transform:translate(-50%, -50%) scale(0.4);
+        filter:blur(18px);
+        width:80px;
+        height:80px;
       }
-      40%{
-        opacity:0.8;
-        transform:translate(-50%, -50%) scale(1.2);
-        filter:blur(40px);
-        width:300px;
-        height:250px;
+      35%{
+        opacity:0.75;
+        transform:translate(-50%, -50%) scale(1.1);
+        filter:blur(35px);
+        width:280px;
+        height:230px;
+      }
+      70%{
+        opacity:0.5;
+        transform:translate(-50%, -50%) scale(1.8);
+        filter:blur(50px);
+        width:480px;
+        height:400px;
       }
       100%{
         opacity:0;
-        transform:translate(-50%, -50%) scale(2.5);
-        filter:blur(60px);
-        width:600px;
-        height:500px;
+        transform:translate(-50%, -50%) scale(2.6);
+        filter:blur(65px);
+        width:650px;
+        height:550px;
       }
+    }
+    #hero-description{
+      transition:opacity 0.8s ease-out, transform 0.8s ease-out;
+      transform:translateY(10px);
+    }
+    #hero-description.reveal{
+      opacity:1 !important;
+      transform:translateY(0);
     }
     #name-text{
       opacity:0;
@@ -1041,17 +1067,17 @@
     <section class="hero" id="about">
       <h1>
         <span id="hash-display"></span>
-        <span id="name-text" style="display:none;"><span>Hi there, I'm Jinn Kasai</span></span>
+        <span id="name-text" style="display:none; opacity:0;"><span>Hi there, I'm Jinn Kasai</span></span>
         <div class="explosion-container" id="explosion"></div>
       </h1>
-      <p>I am a third year Computing Science student at the University of Alberta with a strong passion for cybersecurity and secure systems design. I build resilient software by combining security research. I enjoy tackling complex problems through a real world threat lens. I am seeking a cybersecurity internship where I can contribute to impactful work and continue growing as a security minded individual.</p>
+      <p id="hero-description" style="opacity:0;">I am a third year Computing Science student at the University of Alberta with a strong passion for cybersecurity and secure systems design. I build resilient software by combining security research. I enjoy tackling complex problems through a real world threat lens. I am seeking a cybersecurity internship where I can contribute to impactful work and continue growing as a security minded individual.</p>
 
-      <div class="rolechips">
+      <div class="rolechips" id="hero-roles" style="opacity:0;">
         <span class="role blue">Cybersecurity</span>
         <span class="role blue">Software Developer</span>
       </div>
 
-      <div class="chips" aria-label="Top skills">
+      <div class="chips" id="hero-skills" aria-label="Top skills" style="opacity:0;">
         <span class="chip">Vulnerability Assessment</span>
         <span class="chip">Burp Suite Pro</span>
         <span class="chip">Pen Testing</span>
@@ -1204,17 +1230,39 @@
           currentIndex++;
           setTimeout(typeHash, 50);
         } else {
-          // Wait a bit then show explosion and name simultaneously
+          // Wait a bit then show explosion (smoother)
           setTimeout(() => {
             hashDisplay.classList.remove('typing');
-            // Show name text first
-            hashDisplay.style.display = 'none';
-            nameText.style.display = 'inline';
-            // Start explosion and name reveal at the same time
             createExplosion();
+            // After explosion completes, reveal entire content
             setTimeout(() => {
-              nameText.classList.add('reveal');
-            }, 50);
+              hashDisplay.style.display = 'none';
+              nameText.style.display = 'inline';
+              setTimeout(() => {
+                nameText.classList.add('reveal');
+                nameText.style.opacity = '1';
+                // Reveal description, roles, and skills with slight delays
+                const description = document.getElementById('hero-description');
+                const roles = document.getElementById('hero-roles');
+                const skills = document.getElementById('hero-skills');
+                setTimeout(() => {
+                  description.classList.add('reveal');
+                  // Reveal roles and skills
+                  setTimeout(() => {
+                    if(roles){
+                      roles.style.transition = 'opacity 0.6s ease-out';
+                      roles.style.opacity = '1';
+                    }
+                    setTimeout(() => {
+                      if(skills){
+                        skills.style.transition = 'opacity 0.6s ease-out';
+                        skills.style.opacity = '1';
+                      }
+                    }, 150);
+                  }, 200);
+                }, 200);
+              }, 100);
+            }, 1600); // Wait for explosion to mostly complete
           }, 500);
         }
       }
@@ -1225,16 +1273,18 @@
         // Create main cloud effect (base layer)
         const cloud = document.createElement('div');
         cloud.className = 'explosion-cloud';
-        cloud.style.width = '350px';
-        cloud.style.height = '350px';
+        cloud.style.width = '320px';
+        cloud.style.height = '320px';
+        cloud.style.animation = 'explosionCloud 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards';
         explosionContainer.appendChild(cloud);
         
         // Create multiple fog layers for depth
         for(let i = 0; i < 3; i++){
           const fogLayer = document.createElement('div');
           fogLayer.className = 'fog-layer';
-          fogLayer.style.animationDelay = (i * 0.2) + 's';
-          fogLayer.style.opacity = 0.6 - (i * 0.15);
+          fogLayer.style.animationDelay = (i * 0.15) + 's';
+          fogLayer.style.opacity = 0.55 - (i * 0.12);
+          fogLayer.style.animation = 'fogSpread 1.6s cubic-bezier(0.4, 0, 0.2, 1) forwards';
           explosionContainer.appendChild(fogLayer);
         }
         
@@ -1248,8 +1298,8 @@
         pulse.style.background = 'radial-gradient(circle, rgba(0,255,136,0.7), rgba(0,204,255,0.5), transparent 70%)';
         pulse.style.borderRadius = '50%';
         pulse.style.transform = 'translate(-50%, -50%)';
-        pulse.style.filter = 'blur(15px)';
-        pulse.style.animation = 'explosionPulse 1.2s ease-out forwards';
+        pulse.style.filter = 'blur(12px)';
+        pulse.style.animation = 'explosionPulse 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards';
         explosionContainer.appendChild(pulse);
         
         // Create foggy particle/smoke effects - more organic, cloud-like
@@ -1272,9 +1322,9 @@
           particle.style.setProperty('--tx', (tx + randomOffsetX) + 'px');
           particle.style.setProperty('--ty', (ty + randomOffsetY) + 'px');
           
-          const duration = 1.0 + Math.random() * 0.8;
-          particle.style.animation = `particleBurst ${duration}s ease-out forwards`;
-          particle.style.animationDelay = (Math.random() * 0.4) + 's';
+          const duration = 1.2 + Math.random() * 0.6;
+          particle.style.animation = `particleBurst ${duration}s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+          particle.style.animationDelay = (Math.random() * 0.3) + 's';
           
           // Larger, softer particles for fog effect
           const size = 40 + Math.random() * 80;
@@ -1306,7 +1356,7 @@
         setTimeout(() => {
           explosionContainer.innerHTML = '';
           explosionContainer.classList.remove('active');
-        }, 2000);
+        }, 2200);
       }
       
       // Start animation when page loads
