@@ -164,15 +164,7 @@
       display:flex;
       align-items:center;
       gap:12px;
-    }
-    h1::before{
-      content:'> ';
-      color:var(--brand);
-      font-family:'JetBrains Mono', monospace;
-      opacity:0.8;
-      font-size:0.6em;
-      text-shadow:var(--glow-green);
-      flex-shrink:0;
+      min-height:80px;
     }
     h1 span{
       background:linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 50%, var(--accent) 100%);
@@ -180,6 +172,209 @@
       -webkit-text-fill-color:transparent;
       background-clip:text;
       text-shadow:0 0 30px rgba(0,255,136,.3);
+    }
+    #hash-display{
+      font-family:'JetBrains Mono', monospace;
+      color:var(--brand);
+      font-size:0.8em;
+      letter-spacing:2px;
+      text-shadow:var(--glow-green);
+      opacity:0;
+      animation:fadeIn 0.5s ease forwards;
+    }
+    #hash-display.typing{
+      opacity:1;
+    }
+    #hash-display.typing::after{
+      content:'▊';
+      animation:blink 1s infinite;
+      color:var(--brand);
+      margin-left:4px;
+    }
+    @keyframes blink{
+      0%, 50%{opacity:1}
+      51%, 100%{opacity:0}
+    }
+    @keyframes fadeIn{
+      to{opacity:1}
+    }
+    .explosion-container{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      width:200%;
+      height:400%;
+      pointer-events:none;
+      z-index:10;
+      opacity:0;
+      overflow:visible;
+    }
+    .explosion-container.active{
+      opacity:1;
+    }
+    .explosion-particle{
+      position:absolute;
+      background:radial-gradient(circle, var(--brand), transparent 60%);
+      border-radius:50%;
+      box-shadow:0 0 30px var(--brand), 0 0 60px var(--brand), 0 0 90px rgba(0,255,136,0.5);
+      top:50%;
+      left:50%;
+      opacity:0.8;
+      transform:translate(-50%, -50%);
+      filter:blur(8px);
+    }
+    @keyframes particleBurst{
+      0%{
+        transform:translate(-50%, -50%) scale(0.5);
+        opacity:0.9;
+        filter:blur(10px);
+      }
+      30%{
+        transform:translate(calc(-50% + var(--tx) * 0.3), calc(-50% + var(--ty) * 0.3)) scale(1.5);
+        opacity:0.7;
+        filter:blur(20px);
+      }
+      70%{
+        transform:translate(calc(-50% + var(--tx) * 0.7), calc(-50% + var(--ty) * 0.7)) scale(2);
+        opacity:0.4;
+        filter:blur(30px);
+      }
+      100%{
+        transform:translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(3);
+        opacity:0;
+        filter:blur(50px);
+      }
+    }
+    @keyframes explosionPulse{
+      0%{
+        box-shadow:0 0 0 0 rgba(0,255,136,0.8), 0 0 0 0 rgba(0,204,255,0.6);
+        transform:translate(-50%, -50%) scale(0.3);
+        opacity:1;
+        filter:blur(5px);
+      }
+      30%{
+        box-shadow:0 0 0 60px rgba(0,255,136,0.4), 0 0 0 100px rgba(0,204,255,0.3);
+        transform:translate(-50%, -50%) scale(1.2);
+        opacity:0.9;
+        filter:blur(25px);
+      }
+      70%{
+        box-shadow:0 0 0 120px rgba(0,255,136,0.2), 0 0 0 180px rgba(0,204,255,0.15);
+        transform:translate(-50%, -50%) scale(2);
+        opacity:0.6;
+        filter:blur(40px);
+      }
+      100%{
+        box-shadow:0 0 0 200px rgba(0,255,136,0), 0 0 0 300px rgba(0,204,255,0);
+        transform:translate(-50%, -50%) scale(3);
+        opacity:0;
+        filter:blur(60px);
+      }
+    }
+    @keyframes explosionCloud{
+      0%{
+        opacity:0;
+        transform:translate(-50%, -50%) scale(0);
+        filter:blur(15px);
+      }
+      20%{
+        opacity:1;
+        transform:translate(-50%, -50%) scale(0.8);
+        filter:blur(25px);
+      }
+      50%{
+        opacity:0.9;
+        transform:translate(-50%, -50%) scale(1.5);
+        filter:blur(40px);
+      }
+      100%{
+        opacity:0;
+        transform:translate(-50%, -50%) scale(3);
+        filter:blur(70px);
+      }
+    }
+    .explosion-cloud{
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:250px;
+      height:250px;
+      background:radial-gradient(circle at center, 
+        rgba(0,255,136,0.5) 0%, 
+        rgba(0,255,136,0.3) 30%, 
+        rgba(0,204,255,0.25) 50%, 
+        rgba(0,204,255,0.15) 70%, 
+        transparent 100%);
+      border-radius:50%;
+      transform:translate(-50%, -50%);
+      pointer-events:none;
+      animation:explosionCloud 1.2s ease-out forwards;
+      filter:blur(20px);
+    }
+    .fog-layer{
+      position:absolute;
+      top:50%;
+      left:50%;
+      border-radius:50%;
+      transform:translate(-50%, -50%);
+      pointer-events:none;
+      background:radial-gradient(ellipse, rgba(0,255,136,0.3), rgba(0,204,255,0.2), transparent 70%);
+      filter:blur(30px);
+      animation:fogSpread 1.5s ease-out forwards;
+    }
+    @keyframes fogSpread{
+      0%{
+        opacity:0;
+        transform:translate(-50%, -50%) scale(0.5);
+        filter:blur(20px);
+        width:100px;
+        height:100px;
+      }
+      40%{
+        opacity:0.8;
+        transform:translate(-50%, -50%) scale(1.2);
+        filter:blur(40px);
+        width:300px;
+        height:250px;
+      }
+      100%{
+        opacity:0;
+        transform:translate(-50%, -50%) scale(2.5);
+        filter:blur(60px);
+        width:600px;
+        height:500px;
+      }
+    }
+    #name-text{
+      opacity:0;
+      transform:scale(0.9);
+      filter:blur(15px);
+      position:relative;
+      z-index:5;
+    }
+    #name-text.reveal{
+      opacity:1;
+      transform:scale(1);
+      filter:blur(0);
+      animation:nameReveal 1s ease-out forwards;
+    }
+    @keyframes nameReveal{
+      0%{
+        opacity:0;
+        transform:scale(0.9) translateY(10px);
+        filter:blur(15px);
+      }
+      50%{
+        opacity:0.7;
+        transform:scale(1.05) translateY(-5px);
+        filter:blur(5px);
+      }
+      100%{
+        opacity:1;
+        transform:scale(1) translateY(0);
+        filter:blur(0);
+      }
     }
 
     .hero p{
@@ -334,6 +529,9 @@
 
     .rolechips{
       margin:24px 0;
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
     }
     .role.blue{
       display:inline-block;
@@ -349,13 +547,6 @@
       animation:pulse 3s ease-in-out infinite;
       position:relative;
       overflow:hidden;
-    }
-    .role.blue::before{
-      content:'[SECURITY]';
-      position:absolute;
-      left:8px;
-      opacity:0.3;
-      font-size:10px;
     }
 
     @keyframes pulse{
@@ -523,64 +714,137 @@
       justify-content:space-between;
       gap:32px;
       flex-wrap:wrap;
+      position:relative;
     }
     .contactbox p{
       font-size:18px;
       margin:0;
+      font-family:'JetBrains Mono', monospace;
+      color:var(--muted);
+    }
+    .contactbox p::before{
+      content:'> ';
+      color:var(--brand);
+      margin-right:8px;
     }
     .iconrow{
       display:flex;
-      gap:16px;
+      gap:20px;
       align-items:center;
     }
     .iconbtn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      width:56px;
-      height:56px;
+      width:64px;
+      height:64px;
       border-radius:8px;
-      background:rgba(0,255,136,.08);
-      border:1px solid rgba(0,255,136,.25);
-      box-shadow:var(--shadow);
-      transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background:rgba(0,255,136,.05);
+      border:2px solid rgba(0,255,136,.3);
+      box-shadow:var(--shadow), 0 0 20px rgba(0,255,136,.1);
+      transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       position:relative;
       overflow:hidden;
+      animation:iconPulse 3s ease-in-out infinite;
+    }
+    .iconbtn:nth-child(2){
+      animation-delay:1.5s;
+    }
+    @keyframes iconPulse{
+      0%, 100%{
+        box-shadow:var(--shadow), 0 0 20px rgba(0,255,136,.1);
+        border-color:rgba(0,255,136,.3);
+      }
+      50%{
+        box-shadow:var(--shadow), 0 0 30px rgba(0,255,136,.2);
+        border-color:rgba(0,255,136,.5);
+      }
     }
     .iconbtn::before{
       content:'';
       position:absolute;
-      top:50%;
-      left:50%;
-      width:0;
-      height:0;
-      border-radius:50%;
-      background:rgba(0,255,136,.2);
-      transform:translate(-50%, -50%);
-      transition:width 0.4s ease, height 0.4s ease;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:linear-gradient(135deg, transparent 30%, rgba(0,255,136,.1) 50%, transparent 70%);
+      transform:translateX(-100%);
+      transition:transform 0.6s ease;
     }
-    .iconbtn:hover{
-      transform:translateY(-4px) scale(1.05);
-      border-color:var(--brand);
+    .iconbtn::after{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:2px;
+      background:var(--brand);
       box-shadow:var(--glow-green);
-      background:rgba(0,255,136,.15);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:transform 0.4s ease;
     }
     .iconbtn:hover::before{
-      width:100%;
-      height:100%;
+      transform:translateX(100%);
+    }
+    .iconbtn:hover::after{
+      transform:scaleX(1);
+    }
+    .iconbtn:hover{
+      transform:translateY(-6px) scale(1.08);
+      border-color:var(--brand);
+      box-shadow:0 12px 40px rgba(0,255,136,.4), 0 0 60px rgba(0,255,136,.3), inset 0 0 30px rgba(0,255,136,.1);
+      background:rgba(0,255,136,.15);
     }
     .iconbtn svg{
-      filter:drop-shadow(0 0 4px rgba(0,255,136,.5));
-    }
-    .iconbtn svg{
-      width:26px;
-      height:26px;
+      width:28px;
+      height:28px;
       position:relative;
-      z-index:1;
-      transition:transform 0.3s ease;
+      z-index:2;
+      transition:all 0.4s ease;
+      filter:drop-shadow(0 0 8px rgba(0,255,136,.6));
+      color:var(--brand);
     }
     .iconbtn:hover svg{
-      transform:scale(1.1);
+      transform:scale(1.15) rotate(5deg);
+      filter:drop-shadow(0 0 16px rgba(0,255,136,.9));
+      color:#fff;
+    }
+    /* Corner accent markers */
+    .iconbtn .corner{
+      position:absolute;
+      width:12px;
+      height:12px;
+      z-index:3;
+      opacity:0;
+      transition:opacity 0.3s ease;
+    }
+    .iconbtn .corner.top-left{
+      top:-2px;
+      left:-2px;
+      border-top:2px solid var(--brand);
+      border-left:2px solid var(--brand);
+    }
+    .iconbtn .corner.top-right{
+      top:-2px;
+      right:-2px;
+      border-top:2px solid var(--brand);
+      border-right:2px solid var(--brand);
+    }
+    .iconbtn .corner.bottom-left{
+      bottom:-2px;
+      left:-2px;
+      border-bottom:2px solid var(--brand);
+      border-left:2px solid var(--brand);
+    }
+    .iconbtn .corner.bottom-right{
+      bottom:-2px;
+      right:-2px;
+      border-bottom:2px solid var(--brand);
+      border-right:2px solid var(--brand);
+    }
+    .iconbtn:hover .corner{
+      opacity:1;
     }
 
     /* projects */
@@ -687,12 +951,14 @@
       padding-right:18px;
     }
     .project-title a::after{
-      content:'>>';
-      font-size:14px;
-      font-family:'JetBrains Mono', monospace;
+      content:'→';
+      font-size:16px;
+      font-family:inherit;
       color:var(--brand);
       transition:transform 0.3s ease;
-      margin-left:4px;
+      margin-left:8px;
+      display:inline-block;
+      white-space:nowrap;
     }
     .project-title a:hover::after{
       transform:translateX(4px);
@@ -773,23 +1039,29 @@
 
   <main class="wrap">
     <section class="hero" id="about">
-      <h1><span>Hi there, I'm Jinn Kasai</span></h1>
-      <p>I build secure, resilient software—blending security research, tooling, and full-stack engineering to stay ahead of emerging threats and ship dependable systems.</p>
+      <h1>
+        <span id="hash-display"></span>
+        <span id="name-text" style="display:none;"><span>Hi there, I'm Jinn Kasai</span></span>
+        <div class="explosion-container" id="explosion"></div>
+      </h1>
+      <p>I am a third year Computing Science student at the University of Alberta with a strong passion for cybersecurity and secure systems design. I build resilient software by combining security research. I enjoy tackling complex problems through a real world threat lens. I am seeking a cybersecurity internship where I can contribute to impactful work and continue growing as a security minded individual.</p>
 
       <div class="rolechips">
-        <span class="role blue">Cybersecurity Enthusiast</span>
+        <span class="role blue">Cybersecurity</span>
+        <span class="role blue">Software Developer</span>
       </div>
 
       <div class="chips" aria-label="Top skills">
-        <span class="chip">Web App Vulnerability Assessment</span>
-        <span class="chip">Burp Suite</span>
-        <span class="chip">Java</span>
+        <span class="chip">Vulnerability Assessment</span>
+        <span class="chip">Burp Suite Pro</span>
+        <span class="chip">Pen Testing</span>
+        <span class="chip">Network</span>
         <span class="chip">Python</span>
-        <span class="chip">C / RISC-V</span>
+        <span class="chip">Java</span>
+        <span class="chip">C</span>
+        <span class="chip">C++</span>
+        <span class="chip">JavaScript/TypeScript</span>
         <span class="chip">SQL</span>
-        <span class="chip">JS / TS</span>
-        <span class="chip">VBA</span>
-        <span class="chip">Git / GitHub</span>
       </div>
     </section>
 
@@ -800,7 +1072,7 @@
           <div class="project-media">
             <img src="images/malwareanalyzer.png" alt="Screenshot of MalwareAnalyzer dashboard">
           </div>
-          <h3 class="project-title"><a href="https://github.com/jinkscad/MalwareAnalyzer" target="_blank" rel="noopener">MalwareAnalyzer</a></h3>
+          <h3 class="project-title"><a href="https://github.com/jinkscad/MalwareAnalyzer" target="_blank" rel="noopener">Malware Analyzer</a></h3>
           <p class="project-description">
             A comprehensive static malware analysis tool that examines files for suspicious patterns, calculates entropy, extracts strings, and provides detailed risk assessments. Features both basic and advanced analysis capabilities including PE file analysis, YARA rule matching, and VirusTotal integration.
           </p>
@@ -817,14 +1089,15 @@
           <div class="project-media">
             <img src="images/password.png" alt="Password cracking simulation interface">
           </div>
-          <h3 class="project-title"><a href="https://github.com/jinkscad/PasswordCrackerSimulation" target="_blank" rel="noopener">PasswordCrackerSimulation</a></h3>
+          <h3 class="project-title"><a href="https://github.com/jinkscad/PasswordCrackerSimulation" target="_blank" rel="noopener">Password Security Lab</a></h3>
           <p class="project-description">
-            An educational tool designed to simulate various password cracking techniques, such as brute-force and dictionary attacks. Demonstrates the effectiveness of different attack methods and highlights the importance of strong password policies and security awareness.
+            A comprehensive password security analysis and educational tool featuring breach checking via Have I Been Pwned API, password strength analysis, hash generation, and dictionary attack simulation. Built to promote better password security practices through interactive demonstrations of vulnerability assessment and security awareness.
           </p>
           <div class="project-tech">
             <span>Python</span>
+            <span>Flask</span>
+            <span>Have I Been Pwned API</span>
             <span>Security Education</span>
-            <span>Cryptography</span>
           </div>
         </div>
 
@@ -832,7 +1105,7 @@
           <div class="project-media">
             <img src="images/cyberattackmap.jpg" alt="Live Cyber Attack Map visualization">
           </div>
-          <h3 class="project-title"><a href="https://github.com/jinkscad/CyberAttackMap" target="_blank" rel="noopener">CyberAttackMap</a></h3>
+          <h3 class="project-title"><a href="https://github.com/jinkscad/CyberAttackMap" target="_blank" rel="noopener">Cyber Attack Map</a></h3>
           <p class="project-description">
             A real-time interactive web application that visualizes cyber attacks on a global map. Displays live threat intelligence with attack markers, statistics, and a live feed of security events, providing insights into the scale and nature of cyber threats worldwide.
           </p>
@@ -855,10 +1128,8 @@
             <div class="role">Cyber Security Researcher Intern — Priv Tech Inc.</div>
             <div class="meta">Aug 2025 – Present · Remote</div>
             <ul class="muted">
-              <li>Focus on vulnerability discovery, knowledge sharing, and supporting the company's White Hat Hacker division.</li>
-              <li>Engaged in Bug Bounty and Vulnerability Disclosure Programs (VDP) on HackerOne, identifying and reporting vulnerabilities.</li>
-              <li>Created onboarding and knowledge‑sharing resources for new researchers to accelerate learning.</li>
-              <li>Contributed to business‑side development by strengthening internal collaboration and threat research practices.</li>
+              <li>Identified and reported security vulnerabilities through HackerOne Bug Bounty and VDP programs while supporting the White Hat Hacker division's threat research.</li>
+              <li>Developed onboarding and knowledge-sharing resources that improved training efficiency and strengthened internal collaboration.</li>
             </ul>
           </div>
         </div>
@@ -868,10 +1139,8 @@
             <div class="role">IT Intern — GBP K.K.</div>
             <div class="meta">Apr 2025 – Sep 2025 · Hybrid</div>
             <ul class="muted">
-              <li>Proposed and implemented remote‑monitoring security enhancements for power generation systems.</li>
-              <li>Conducted on‑site UPS inspection and maintenance at hydroelectric facilities to ensure reliability.</li>
-              <li>Developed front‑end components for the internal HR system using React and TypeScript.</li>
-              <li>Maintained and updated corporate website built on WordPress using PHP, HTML, CSS, and JavaScript.</li>
+              <li>Enhanced security for remote-monitoring systems in power generation environments and performed UPS inspections at hydroelectric facilities to ensure system reliability.</li>
+              <li>Built React and TypeScript components for an internal HR platform and maintained the corporate WordPress site using PHP, HTML, CSS, and JavaScript.</li>
             </ul>
           </div>
         </div>
@@ -881,9 +1150,8 @@
             <div class="role">Software Engineer Intern — Nexceed Inc.</div>
             <div class="meta">May 2025 – Aug 2025 · On‑site (Tokyo, Japan)</div>
             <ul class="muted">
-              <li>Developed an automation tool using Excel VBA to streamline data transfer between enterprise systems.</li>
-              <li>Reduced manual processing and improved efficiency by automating repetitive data‑integration tasks.</li>
-              <li>Created documentation and training materials to ensure smooth internal adoption of tools.</li>
+              <li>Created an Excel VBA automation tool that streamlined data transfer between enterprise systems and reduced manual workload for internal teams.</li>
+              <li>Produced documentation and training materials that supported smooth adoption of new automation processes.</li>
             </ul>
           </div>
         </div>
@@ -896,9 +1164,17 @@
         <p class="muted">Feel free to contact me!</p>
         <div class="iconrow">
           <a class="iconbtn" href="https://www.linkedin.com/in/jin-kasai/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8 8.5h3.8v2h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-5.9c0-1.41-.03-3.22-1.96-3.22-1.96 0-2.26 1.53-2.26 3.11V23H8V8.5z"/></svg>
           </a>
           <a class="iconbtn" href="mailto:skasai@ualberta.ca" aria-label="Email">
+            <div class="corner top-left"></div>
+            <div class="corner top-right"></div>
+            <div class="corner bottom-left"></div>
+            <div class="corner bottom-right"></div>
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
           </a>
         </div>
@@ -912,6 +1188,132 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+    
+    // Hash animation sequence
+    (function(){
+      const hash = '62387b46cafd13c9f59d47de7adb0d2b';
+      const hashDisplay = document.getElementById('hash-display');
+      const nameText = document.getElementById('name-text');
+      const explosionContainer = document.getElementById('explosion');
+      let currentIndex = 0;
+      
+      function typeHash(){
+        if(currentIndex < hash.length){
+          hashDisplay.textContent = hash.substring(0, currentIndex + 1);
+          hashDisplay.classList.add('typing');
+          currentIndex++;
+          setTimeout(typeHash, 50);
+        } else {
+          // Wait a bit then show explosion and name simultaneously
+          setTimeout(() => {
+            hashDisplay.classList.remove('typing');
+            // Show name text first
+            hashDisplay.style.display = 'none';
+            nameText.style.display = 'inline';
+            // Start explosion and name reveal at the same time
+            createExplosion();
+            setTimeout(() => {
+              nameText.classList.add('reveal');
+            }, 50);
+          }, 500);
+        }
+      }
+      
+      function createExplosion(){
+        explosionContainer.classList.add('active');
+        
+        // Create main cloud effect (base layer)
+        const cloud = document.createElement('div');
+        cloud.className = 'explosion-cloud';
+        cloud.style.width = '350px';
+        cloud.style.height = '350px';
+        explosionContainer.appendChild(cloud);
+        
+        // Create multiple fog layers for depth
+        for(let i = 0; i < 3; i++){
+          const fogLayer = document.createElement('div');
+          fogLayer.className = 'fog-layer';
+          fogLayer.style.animationDelay = (i * 0.2) + 's';
+          fogLayer.style.opacity = 0.6 - (i * 0.15);
+          explosionContainer.appendChild(fogLayer);
+        }
+        
+        // Create central pulse (softer, more diffused)
+        const pulse = document.createElement('div');
+        pulse.style.position = 'absolute';
+        pulse.style.top = '50%';
+        pulse.style.left = '50%';
+        pulse.style.width = '60px';
+        pulse.style.height = '60px';
+        pulse.style.background = 'radial-gradient(circle, rgba(0,255,136,0.7), rgba(0,204,255,0.5), transparent 70%)';
+        pulse.style.borderRadius = '50%';
+        pulse.style.transform = 'translate(-50%, -50%)';
+        pulse.style.filter = 'blur(15px)';
+        pulse.style.animation = 'explosionPulse 1.2s ease-out forwards';
+        explosionContainer.appendChild(pulse);
+        
+        // Create foggy particle/smoke effects - more organic, cloud-like
+        const particleCount = 50;
+        
+        for(let i = 0; i < particleCount; i++){
+          const particle = document.createElement('div');
+          particle.className = 'explosion-particle';
+          
+          // Spread particles in all directions from center
+          const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 1.2;
+          const distance = 120 + Math.random() * 250; // Wider, more organic spread
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance * 0.7; // Slightly compressed vertically
+          
+          // Add organic randomness for cloud-like movement
+          const randomOffsetX = (Math.random() - 0.5) * 200;
+          const randomOffsetY = (Math.random() - 0.5) * 150;
+          
+          particle.style.setProperty('--tx', (tx + randomOffsetX) + 'px');
+          particle.style.setProperty('--ty', (ty + randomOffsetY) + 'px');
+          
+          const duration = 1.0 + Math.random() * 0.8;
+          particle.style.animation = `particleBurst ${duration}s ease-out forwards`;
+          particle.style.animationDelay = (Math.random() * 0.4) + 's';
+          
+          // Larger, softer particles for fog effect
+          const size = 40 + Math.random() * 80;
+          particle.style.width = size + 'px';
+          particle.style.height = size + 'px';
+          particle.style.opacity = 0.6 + Math.random() * 0.3;
+          
+          // More diffused colors and gradients
+          const colorRand = Math.random();
+          if(colorRand > 0.6){
+            particle.style.background = 'radial-gradient(circle, rgba(0,204,255,0.6), transparent 60%)';
+            particle.style.boxShadow = '0 0 40px rgba(0,204,255,0.5), 0 0 80px rgba(0,204,255,0.3)';
+          } else if(colorRand > 0.3){
+            particle.style.background = 'radial-gradient(circle, rgba(0,255,136,0.5), rgba(0,204,255,0.3), transparent 70%)';
+            particle.style.boxShadow = '0 0 50px rgba(0,255,136,0.4), 0 0 100px rgba(0,204,255,0.3)';
+          } else {
+            particle.style.background = 'radial-gradient(circle, rgba(255,107,107,0.4), transparent 65%)';
+            particle.style.boxShadow = '0 0 35px rgba(255,107,107,0.3), 0 0 70px rgba(255,107,107,0.2)';
+          }
+          
+          // Add more blur for foggy effect
+          const blurAmount = 15 + Math.random() * 25;
+          particle.style.filter = `blur(${blurAmount}px)`;
+          
+          explosionContainer.appendChild(particle);
+        }
+        
+        // Clean up particles after animation
+        setTimeout(() => {
+          explosionContainer.innerHTML = '';
+          explosionContainer.classList.remove('active');
+        }, 2000);
+      }
+      
+      // Start animation when page loads
+      setTimeout(() => {
+        typeHash();
+      }, 300);
+    })();
     
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
