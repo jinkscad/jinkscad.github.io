@@ -1160,7 +1160,91 @@
         height:24px;
       }
       
-      /* Explosion adjustments for mobile */
+      /* Enhanced visual effects for mobile */
+      
+      /* Stronger glows and shadows for better visibility */
+      .card{
+        box-shadow:var(--shadow), inset 0 0 25px rgba(0,255,136,.03), 0 0 15px rgba(0,255,136,.05);
+        border-color:rgba(0,255,136,.2);
+      }
+      .card:hover{
+        box-shadow:var(--shadow-lg), 0 0 30px rgba(0,255,136,.3), inset 0 0 30px rgba(0,255,136,.05);
+        border-color:rgba(0,255,136,.5);
+      }
+      
+      .project-card{
+        box-shadow:var(--shadow), inset 0 0 25px rgba(0,255,136,.03), 0 0 15px rgba(0,255,136,.05);
+        border-color:rgba(0,255,136,.2);
+      }
+      .project-card:hover{
+        box-shadow:var(--shadow-lg), 0 0 35px rgba(0,255,136,.35), inset 0 0 35px rgba(0,255,136,.05);
+        border-color:rgba(0,255,136,.5);
+      }
+      
+      /* Enhanced badges and chips */
+      .role.blue{
+        box-shadow:0 0 15px rgba(0,255,136,.4), 0 0 25px rgba(0,255,136,.2);
+        border-width:2px;
+      }
+      
+      .chip{
+        border-width:1.5px;
+        box-shadow:0 0 10px rgba(0,255,136,.1);
+      }
+      .chip:hover{
+        box-shadow:0 0 20px rgba(0,255,136,.4), 0 4px 15px rgba(0,255,136,.2);
+      }
+      
+      /* Stronger icon button glows */
+      .iconbtn{
+        box-shadow:var(--shadow), 0 0 25px rgba(0,255,136,.15), inset 0 0 20px rgba(0,255,136,.05);
+        border-width:2px;
+      }
+      .iconbtn:hover{
+        box-shadow:0 8px 35px rgba(0,255,136,.5), 0 0 50px rgba(0,255,136,.3);
+      }
+      
+      /* Enhanced text glows */
+      h1 span{
+        text-shadow:0 0 40px rgba(0,255,136,.4), 0 0 60px rgba(0,204,255,.3);
+      }
+      
+      h2{
+        text-shadow:0 0 15px rgba(0,255,136,.3);
+      }
+      
+      /* Stronger header glow */
+      header{
+        border-bottom-width:2px;
+        border-bottom-color:rgba(0,255,136,.3);
+        box-shadow:0 4px 25px rgba(0,0,0,.6), 0 0 15px rgba(0,255,136,.1);
+      }
+      
+      /* Enhanced timeline markers */
+      .titem::before{
+        box-shadow:0 0 0 4px var(--panel), 0 0 25px rgba(0,255,136,.5), 0 0 40px rgba(0,255,136,.3);
+      }
+      .titem:hover::before{
+        box-shadow:0 0 0 4px var(--panel), 0 0 35px rgba(0,255,136,.7), 0 0 55px rgba(0,255,136,.4);
+      }
+      
+      .timeline::before{
+        box-shadow:0 0 15px rgba(0,255,136,.4);
+        opacity:0.5;
+      }
+      
+      /* Enhanced background grid visibility */
+      body::before{
+        background:repeating-linear-gradient(
+          0deg,
+          rgba(0,255,136,.05) 0px,
+          transparent 1px,
+          transparent 2px,
+          rgba(0,255,136,.05) 3px
+        );
+      }
+      
+      /* Explosion adjustments for mobile - more visible but lighter */
       .explosion-container{
         width:180%;
         height:350%;
@@ -1171,6 +1255,13 @@
       }
       .fog-layer{
         animation-duration:1.4s;
+      }
+      .explosion-particle{
+        box-shadow:0 0 30px var(--brand), 0 0 60px var(--brand), 0 0 90px rgba(0,255,136,0.5);
+        filter:blur(10px);
+      }
+      .explosion-container.active .explosion-particle{
+        opacity:0.85;
       }
       
       /* Footer */
@@ -1206,6 +1297,17 @@
       .titem img{width:44px; height:44px}
       .timeline::before{left:14px}
       .titem::before{left:10px; width:8px; height:8px}
+      
+      /* Extra small - even stronger visual effects */
+      .card, .project-card{
+        box-shadow:var(--shadow), inset 0 0 30px rgba(0,255,136,.04), 0 0 20px rgba(0,255,136,.06);
+      }
+      h1 span{
+        text-shadow:0 0 50px rgba(0,255,136,.5), 0 0 70px rgba(0,204,255,.4);
+      }
+      .iconbtn{
+        box-shadow:var(--shadow), 0 0 30px rgba(0,255,136,.2), inset 0 0 25px rgba(0,255,136,.06);
+      }
     }
 
     /* scrollbar */
@@ -1514,7 +1616,9 @@
         explosionContainer.appendChild(pulse);
         
         // Create foggy particle/smoke effects - more organic, cloud-like
-        const particleCount = 50;
+        // Reduce particle count on mobile for better performance
+        const isMobile = window.innerWidth <= 768;
+        const particleCount = isMobile ? 35 : 50;
         
         for(let i = 0; i < particleCount; i++){
           const particle = document.createElement('div');
