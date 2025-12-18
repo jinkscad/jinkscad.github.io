@@ -1153,6 +1153,39 @@
       font-weight:500;
       font-family:'JetBrains Mono', monospace;
     }
+    .project-authors{
+      margin:16px 0;
+      padding-top:16px;
+      border-top:1px solid rgba(255,255,255,.06);
+    }
+    .project-authors-label{
+      font-size:11px;
+      color:var(--muted);
+      margin-bottom:10px;
+      font-weight:600;
+      font-family:'JetBrains Mono', monospace;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    .project-authors-list{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:8px 12px;
+      font-size:12px;
+    }
+    .project-author{
+      color:var(--text);
+    }
+    .project-author a{
+      color:var(--brand);
+      text-decoration:none;
+      transition:all 0.3s ease;
+      font-weight:500;
+    }
+    .project-author a:hover{
+      color:var(--brand-2);
+      text-shadow:var(--glow-cyan);
+    }
 
     /* responsive */
     @media(max-width:768px){
@@ -1264,6 +1297,14 @@
       .project-tech span{
         font-size:11px;
         padding:5px 10px;
+      }
+      .project-authors-list{
+        grid-template-columns:1fr;
+        gap:6px;
+      }
+      .project-authors{
+        margin:12px 0;
+        padding-top:12px;
       }
       
       /* Contact */
@@ -1554,17 +1595,18 @@
 
         <div class="project-card">
           <div class="project-media">
-            <img src="images/cyberattackmap.jpg" alt="Live Cyber Attack Map visualization">
+            <img src="images/cyberattackmap.png" alt="Global Threat Intelligence - 3D globe visualization of cyber threats">
           </div>
-          <h3 class="project-title"><a href="https://github.com/jinkscad/CyberAttackMap" target="_blank" rel="noopener">Cyber Attack Map</a></h3>
+          <h3 class="project-title"><a href="https://github.com/jinkscad/CyberAttackMap" target="_blank" rel="noopener">Global Threat Intelligence</a></h3>
           <p class="project-description">
-            A real-time interactive web application that visualizes cyber attacks on a global map. Displays live threat intelligence with attack markers, statistics, and a live feed of security events, providing insights into the scale and nature of cyber threats worldwide.
+            A real-time 3D globe visualization of cyber threats using real threat intelligence data. Features interactive Earth visualization with threat infrastructure and active attackers from Abuse.ch and SANS DShield, including live statistics and threat feed.
           </p>
           <div class="project-tech">
             <span>JavaScript</span>
-            <span>Web Mapping</span>
-            <span>Real-time Data</span>
+            <span>Globe.gl</span>
+            <span>Three.js</span>
             <span>Threat Intelligence</span>
+            <span>Real-time Data</span>
           </div>
         </div>
 
@@ -1582,6 +1624,35 @@
             <span>React</span>
             <span>SQLite</span>
             <span>News Aggregation</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-media">
+            <img src="images/Event.png" alt="ChicksEvent - Event Management App">
+          </div>
+          <h3 class="project-title"><a href="https://github.com/jinkscad/event-management-app" target="_blank" rel="noopener">Event Management App</a></h3>
+          <p class="project-description">
+            A comprehensive Android application for managing events, waiting lists, and participant registration. Features QR code generation, geolocation tracking, and admin/organizer management with Firebase Realtime Database.
+          </p>
+          <div class="project-authors">
+            <div class="project-authors-label">Co-authors</div>
+            <div class="project-authors-list">
+              <span class="project-author">
+                <a href="https://github.com/friedchickenblob" target="_blank" rel="noopener">Jordan Kwan</a>
+              </span>
+              <span class="project-author">
+                <a href="https://github.com/9juanjuan7" target="_blank" rel="noopener">Juan Rea</a>
+              </span>
+            </div>
+          </div>
+          <div class="project-tech">
+            <span>Java</span>
+            <span>Android</span>
+            <span>Firebase</span>
+            <span>OSMDroid</span>
+            <span>ZXing</span>
+            <span>QR Codes</span>
           </div>
         </div>
       </div>
