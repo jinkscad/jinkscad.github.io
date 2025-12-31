@@ -1566,13 +1566,14 @@
           </div>
           <h3 class="project-title"><a href="https://github.com/jinkscad/MalwareAnalyzer" target="_blank" rel="noopener">Malware Analyzer</a></h3>
           <p class="project-description">
-            A comprehensive static malware analysis tool that examines files for suspicious patterns, calculates entropy, extracts strings, and provides detailed risk assessments. Features both basic and advanced analysis capabilities including PE file analysis, YARA rule matching, and VirusTotal integration.
+            A static malware analysis tool combining ML classification with behavioral pattern detection. Uses a tiered ensemble approach with Random Forest/XGBoost models, fuzzy hashing, and heuristic analysis to detect ransomware, keyloggers, process injectors, and backdoors. Features PE file analysis, YARA rule matching, and VirusTotal integration.
           </p>
           <div class="project-tech">
             <span>Python</span>
             <span>Flask</span>
+            <span>scikit-learn</span>
+            <span>XGBoost</span>
             <span>YARA</span>
-            <span>PE Analysis</span>
             <span>VirusTotal API</span>
           </div>
         </div>
@@ -1583,13 +1584,14 @@
           </div>
           <h3 class="project-title"><a href="https://github.com/jinkscad/PasswordCrackerSimulation" target="_blank" rel="noopener">Password Security Lab</a></h3>
           <p class="project-description">
-            A comprehensive password security analysis and educational tool featuring breach checking via Have I Been Pwned API, password strength analysis, hash generation, and dictionary attack simulation. Built to promote better password security practices through interactive demonstrations of vulnerability assessment and security awareness.
+            An educational password security tool with real-time WebSocket-powered attack simulations. Features dictionary, brute force, mask (Hashcat-style), and rule-based attacks plus rainbow table lookups. Includes breach checking via Have I Been Pwned API, strength analysis with entropy calculations, and hash generation.
           </p>
           <div class="project-tech">
             <span>Python</span>
             <span>Flask</span>
+            <span>Flask-SocketIO</span>
             <span>Have I Been Pwned API</span>
-            <span>Security Education</span>
+            <span>WebSockets</span>
           </div>
         </div>
 
@@ -1599,14 +1601,14 @@
           </div>
           <h3 class="project-title"><a href="https://github.com/jinkscad/CyberAttackMap" target="_blank" rel="noopener">Global Threat Intelligence</a></h3>
           <p class="project-description">
-            A real-time 3D globe visualization of cyber threats using real threat intelligence data. Features interactive Earth visualization with threat infrastructure and active attackers from Abuse.ch and SANS DShield, including live statistics and threat feed.
+            An interactive 3D globe visualization of real-time cyber threats aggregating data from 6 threat intelligence APIs including Abuse.ch, URLhaus, SANS DShield, and Blocklist.de. Features color-coded threat markers, live threat feed, mobile-responsive glassmorphism UI, and auto-refresh every 10 minutes.
           </p>
           <div class="project-tech">
             <span>JavaScript</span>
-            <span>Globe.gl</span>
-            <span>Three.js</span>
+            <span>Mapbox GL JS</span>
             <span>Threat Intelligence</span>
             <span>Real-time Data</span>
+            <span>REST APIs</span>
           </div>
         </div>
 
